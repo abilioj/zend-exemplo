@@ -4,6 +4,7 @@
 
 * roda - php -S 0.0.0.0:8080 -t public public/index.php || composer run --timeout 0 serve
 
+* atualizar o projeto a nivel de class - composer dump-autoload -o
 -----------------------------------------------------------------------------------------------
 # Aqui está a lista com todos os componentes que iremos utilizar
 
