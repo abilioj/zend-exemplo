@@ -72,13 +72,15 @@ https://adminlte.io/themes/AdminLTE/index.html
     - php_pdo_mysql
     - php_curl
     - php_mbstring
------------------------------------------------------------------------------------------------
 
-# instalata componete
+### - Exemplo de como instala componete
  - zend db -> 
  ```bash
  composer require zendframework/zend-db
 ```
+
+-----------------------------------------------------------------------------------------------
+
 # outro
 - <b>link :</b> https://docs.zendframework.com/tutorials/getting-started/skeleton-application/
 
