@@ -1,9 +1,9 @@
 # cria o um modulo "Core"
 - cria  uma pasta 'Core' dentro da pasta module, com a estrutura iqual a da pasta 'Application' padrão do zendframework/skeleton-application,
   e registra o novo modele em  .\config\modules.config.php antes de Application, e adicione no autoloado do composer o modulo ' ,"Core\\": "module/Core/src/" '
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 # CONFIG Do Banco de Dado mysql com zend-db
-
+```php
     'db' => [
         'driver'   => 'Pdo_Mysql',
         'host'     => 'locaLhost',
@@ -11,18 +11,19 @@
         'username' => 'root',
         'password' => '',
     ]
+```
 - no return do arquivo .\config\autoload\global.php adicio a cofiguração acima, e regita em .\config\application.config.php no "service_manager"  adicion a class 
     "Adapter::class => AdapterServiceFactory::class,"
 
 https://docs.zendframework.com/zend-db/adapter/
 https://docs.zendframework.com/tutorials/getting-started/database-and-models/
 https://docs.zendframework.com/zend-db/result-set/#quick-start
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 # instala o templete  AdminLTE 3 
 - copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 # CLASS Abstrata de email - implementando no core
-
+```php
     'mail' => [
         'name'              => 'sandbox.smtp.mailtrap.io', # nome do servidor
         'host'              => 'sandbox.smtp.mailtrap.io', # servidor
@@ -36,11 +37,12 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
             'auth' => 'CRAM-MD5',
         ],
     ]
-
+``` 
 - primeiro setamos as configurações acima em .\config\autoload\global.php
 - em .\module\Core\src vamos criar a pasta "Mail", e nela a abstract class chamada "AbstractCoreMain" com as propriedade em protected "transport,view,body,message,subject,to,replyTo,data,page,cc" com seus gets e sets. OBS "os sets retona a propria instacia".
 - cria os metodos e usando as seginte libs:
-
+```php
+{
     use zend\View\View; 
     use Zend\Mail\Message;
     use Zend\Mime\Message as MimeMessage;
@@ -84,7 +86,9 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
     public function send() {
         $this->transport->send($this->message);
     }
+}
+```
 
 https://docs.zendframework.com/zend-mail/transport/intro/
 https://mailtrap.io/
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------

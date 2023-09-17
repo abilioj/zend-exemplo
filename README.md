@@ -2,9 +2,16 @@
 
 * cria o projeto - composer create-project -s dev zendframework/skeleton-application zf3
 
-* roda - php -S 0.0.0.0:8080 -t public public/index.php || composer run --timeout 0 serve
-
-* atualizar o projeto a nivel de class - composer dump-autoload -o
+* roda 
+```bash
+php -S 0.0.0.0:8080 -t public public/index.php 
+# || 
+composer run --timeout 0 serve
+```
+* atualizar o projeto a nivel de class 
+```bash
+composer dump-autoload -o
+```
 -----------------------------------------------------------------------------------------------
 # Aqui está a lista com todos os componentes que iremos utilizar
 
@@ -37,7 +44,9 @@
 -----------------------------------------------------------------------------------------------
 
 # instalata componete
- - zend db -> composer require zendframework/zend-db
-
+ - zend db -> 
+ ```bash
+ composer require zendframework/zend-db
+```
 # outro
 - <b>link :</b> https://docs.zendframework.com/tutorials/getting-started/skeleton-application/
