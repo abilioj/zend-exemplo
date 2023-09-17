@@ -100,7 +100,7 @@ https://mailtrap.io/
 
 ** Facatories Configurações pra manada email
 
-https://docs.zendframework.com/zend-form/helper/form-element-errors/
+https://docs.zendframework.com/zend-form/helper/form-element-errors/ <br/>
 https://docs.zendframework.com/zend-form/quick-start/#creation-via-factory
 
 - Criarimos um classe em ./modele/Core/src/Facatories chamada "TransportSmtpFacatory"
