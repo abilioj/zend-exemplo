@@ -14,7 +14,7 @@ composer dump-autoload -o
 ```
 ----------------------------------------------------------------------------------------------
 ## DOCS
-[Core](doc.md)
+* [Core](doc-core.md)
 -----------------------------------------------------------------------------------------------
 # Aqui está a lista com todos os componentes que iremos utilizar
 
