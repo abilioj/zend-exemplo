@@ -22,7 +22,6 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
 - copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # manda email - implementando no core
-- primeiro setamos as configurações em .\config\autoload\global.php
 
     'mail' => [
         'name'              => 'sandbox.smtp.mailtrap.io', # nome do servidor
@@ -38,7 +37,7 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
         ],
     ]
 
--
+- primeiro setamos as configurações em .\config\autoload\global.php
 
 https://docs.zendframework.com/zend-mail/transport/intro/
 https://mailtrap.io/
