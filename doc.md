@@ -23,7 +23,7 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # manda email - implementando no core
 - primeiro setamos as configurações em .\config\autoload\global.php
-<code>
+
     'mail' => [
         'name'              => 'sandbox.smtp.mailtrap.io', # nome do servidor
         'host'              => 'sandbox.smtp.mailtrap.io', # servidor
@@ -37,7 +37,7 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
             'auth' => 'CRAM-MD5',
         ],
     ]
-</code>
+
 -
 
 https://docs.zendframework.com/zend-mail/transport/intro/
