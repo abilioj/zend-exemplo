@@ -81,3 +81,8 @@ https://adminlte.io/themes/AdminLTE/index.html
 ```
 # outro
 - <b>link :</b> https://docs.zendframework.com/tutorials/getting-started/skeleton-application/
+
+# Autores
+
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/18088606?s=400&u=2358b37d351e57891b5b403fcd27c82eca595324&v=4" width=115><br><sub>Abílio José</sub>](https://github.com/abilioj) |
+| :---: |
