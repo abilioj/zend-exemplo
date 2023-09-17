@@ -21,8 +21,14 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 # instala o templete  AdminLTE 3 
 - copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
+
+https://adminlte.io/
+https://adminlte.io/themes/AdminLTE/index.html
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 # CLASS Abstrata de email - implementando no core
+https://docs.zendframework.com/zend-mail/transport/intro/
+https://mailtrap.io/
+
 ```php
     'mail' => [
         'name'              => 'sandbox.smtp.mailtrap.io', # nome do servidor
@@ -38,11 +44,14 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
         ],
     ]
 ``` 
+
 - primeiro setamos as configurações acima em .\config\autoload\global.php
 - em .\module\Core\src vamos criar a pasta "Mail", e nela a abstract class chamada "AbstractCoreMain" com as propriedade em protected "transport,view,body,message,subject,to,replyTo,data,page,cc" com seus gets e sets. OBS "os sets retona a propria instacia".
 - cria os metodos e usando as seginte libs:
+
 ```php
-{
+    namespace Core\Mail;
+
     use zend\View\View; 
     use Zend\Mail\Message;
     use Zend\Mime\Message as MimeMessage;
@@ -86,9 +95,15 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
     public function send() {
         $this->transport->send($this->message);
     }
-}
+
 ```
 
-https://docs.zendframework.com/zend-mail/transport/intro/
-https://mailtrap.io/
+** Facatories Configurações pra manada email
+
+https://docs.zendframework.com/zend-form/helper/form-element-errors/
+https://docs.zendframework.com/zend-form/quick-start/#creation-via-factory
+
+- Criarimos um classe em ./modele/Core/src/Facatories chamada "TransportSmtpFacatory"
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------

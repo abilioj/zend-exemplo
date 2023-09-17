@@ -1,5 +1,5 @@
 <?php
-namespace Core\Main;
+namespace Core\Mail;
 
 use zend\View\View; 
 use Zend\Mail\Message;
