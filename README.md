@@ -12,6 +12,9 @@ composer run --timeout 0 serve
 ```bash
 composer dump-autoload -o
 ```
+----------------------------------------------------------------------------------------------
+## DOCS
+[Core](doc.md)
 -----------------------------------------------------------------------------------------------
 # Aqui está a lista com todos os componentes que iremos utilizar
 

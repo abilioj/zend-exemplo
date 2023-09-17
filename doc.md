@@ -2,7 +2,7 @@
 - cria  uma pasta 'Core' dentro da pasta module, com a estrutura iqual a da pasta 'Application' padrão do zendframework/skeleton-application,
   e registra o novo modele em  .\config\modules.config.php antes de Application, e adicione no autoloado do composer o modulo ' ,"Core\\": "module/Core/src/" '
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-# CONFIG Do Banco de Dado mysql com zend-db
+## CONFIG Do Banco de Dado mysql com zend-db
 ```php
     'db' => [
         'driver'   => 'Pdo_Mysql',
@@ -19,13 +19,13 @@ https://docs.zendframework.com/zend-db/adapter/
 https://docs.zendframework.com/tutorials/getting-started/database-and-models/
 https://docs.zendframework.com/zend-db/result-set/#quick-start
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-# instala o templete  AdminLTE 3 
+## instala o templete  AdminLTE 3 
 - copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
 
 https://adminlte.io/
 https://adminlte.io/themes/AdminLTE/index.html
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-# CLASS Abstrata de email - implementando no core
+## CLASS Abstrata de email - implementando no core
 https://docs.zendframework.com/zend-mail/transport/intro/
 https://mailtrap.io/
 
@@ -98,7 +98,7 @@ https://mailtrap.io/
 
 ```
 
-** <b>Factories</b>
+### <b>Factories</b>
 
 https://docs.zendframework.com/zend-form/helper/form-element-errors/ <br/>
 https://docs.zendframework.com/zend-form/quick-start/#creation-via-factory
@@ -188,6 +188,4 @@ class FormElementErrorsFactory implements FactoryInterface{
         ]
     ]
 ```
----------------------------------------------------------------------------------------------------------------------------------------------------
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------
