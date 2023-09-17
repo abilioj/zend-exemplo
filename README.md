@@ -1,5 +1,9 @@
 # zend-exemplo
 
+<p align="center">
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+</p>
+
 * cria o projeto - composer create-project -s dev zendframework/skeleton-application zf3
 
 * roda 
