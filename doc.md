@@ -98,12 +98,96 @@ https://mailtrap.io/
 
 ```
 
-** Facatories Configurações pra manada email
+** <b>Factories</b>
 
 https://docs.zendframework.com/zend-form/helper/form-element-errors/ <br/>
 https://docs.zendframework.com/zend-form/quick-start/#creation-via-factory
 
-- Criarimos um classe em ./modele/Core/src/Facatories chamada "TransportSmtpFacatory"
+-- Configurações pra prepara o objeto Transpot pra manada email,pra isso configuramos o serviço Factories de Transport 
+- Criarimos um classe em ./modele/Core/src/Factories chamada "TransportSmtpFactory"
+
+```php
+namespace Core\Factories;
+use Zend\Mail\Transport\SmtpOptions;
+use zend\Mail\Transport\Smtp as SMTPTransport;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+
+class TransportSmtpFactory implements FactoryInterface{
+
+    /**
+     * {@inheritDoc}
+    */
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    {
+        $config = $container->get('config');
+        $options = new SmtpOptions($config['mail']);
+        $transpot = new SMTPTransport();
+        $transpot->setOptions($options);
+        return $transpot;
+    }    
+
+}
+```
+
+- registrando os serviço Facatories de Transport pra funciona em module\Core\config\module.config.php
+```php
+use Core\Facatories\TransportSmtpFactory;
+return [
+    'service_manager' => [
+        "factories" => [
+            "core.transport.smtp" => TransportSmtpFactory::class
+        ]
+    ]
+];
+```
+
+-- Agora configuramos o serviço Factories de trata os erros dos formularios do projeto que na verdade é um helper
+- Criarimos um classe em ./modele/Core/src/Factories chamada "FormElementErrorsFactory"
+
+```php
+namespace Core\Factories;
+use Interop\Container\ContainerInterface;
+use Zend\Form\View\Helper\FormElementErrors;
+use Zend\ServiceManager\Factory\FactoryInterface;
+class FormElementErrorsFactory implements FactoryInterface{
+    /**
+     * {@inheritDoc}
+    */
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    {
+        $helper = new FormElementErrors();
+
+        $config = $container->get('config');
+        if (isset($config['view_helper_config']['form_element_errors'])) {
+            $configHelper = $config['view_helper_config']['form_element_errors'];
+            if (isset($configHelper['message_open_format'])) {
+                $helper->setMessageOpenFormat($configHelper['message_open_format']);
+            }
+            if (isset($configHelper['message_separator_string'])) {
+                $helper->setMessageSeparatorString($configHelper['message_separator_string']);
+            }
+            if (isset($configHelper['message_close_string'])) {
+                $helper->setMessageCloseString($configHelper['message_close_string']);
+            }
+        }
+        return $helper;
+    }    
+}
+```
+
+-- registrando os serviço Facatories Helper de trata os erros de formularios em  module\Core\config\module.config.php
+
+```php
+    use Zend\Form\View\Helper\FormElementErrors;
+    use Core\Factories\FormElementErrorsFactory;
+
+    'view_helpers' =>[
+        'factories' => [
+            FormElementErrors::class => FormElementErrorsFactory::class
+        ]
+    ]
+```
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------

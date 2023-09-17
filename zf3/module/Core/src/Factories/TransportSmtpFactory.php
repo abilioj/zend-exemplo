@@ -8,6 +8,9 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 
 class TransportSmtpFactory implements FactoryInterface{
 
+    /**
+     * {@inheritDoc}
+    */
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $config = $container->get('config');
