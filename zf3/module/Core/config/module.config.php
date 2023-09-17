@@ -1,4 +1,11 @@
-<?php 
-namespace Core;
+<?php
 
-return [];
+use Core\Factories\TransportSmtpFactory;
+
+return [
+    'service_manager' => [
+        "factories" => [
+            "core.transport.smtp" => TransportSmtpFactory::class
+        ]
+    ]
+];
