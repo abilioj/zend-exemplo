@@ -21,3 +21,25 @@ https://docs.zendframework.com/zend-db/result-set/#quick-start
 # instala o templete  AdminLTE 3 
 - copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# manda email - implementando no core
+- primeiro setamos as configurações em .\config\autoload\global.php
+<code>
+    'mail' => [
+        'name'              => 'sandbox.smtp.mailtrap.io', # nome do servidor
+        'host'              => 'sandbox.smtp.mailtrap.io', # servidor
+        'port'              => 2525, # porta
+        'connection_class'  => 'login', # tipo de conexao do zend
+        'connection_config' => [
+            'from' => 'zf3napratica@teste.com',
+            'username' => '3b62c27d4b017d',
+            'password' => '********72a4',
+            // 'ssl' => 'ssl', # se for envio ssl - gmail usa
+            'auth' => 'CRAM-MD5',
+        ],
+    ]
+</code>
+-
+
+https://docs.zendframework.com/zend-mail/transport/intro/
+https://mailtrap.io/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
