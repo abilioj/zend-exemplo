@@ -13,8 +13,32 @@ composer run --timeout 0 serve
 composer dump-autoload -o
 ```
 ----------------------------------------------------------------------------------------------
+## CONFIG Do Banco de Dado mysql com zend-db
+```php
+    'db' => [
+        'driver'   => 'Pdo_Mysql',
+        'host'     => 'locaLhost',
+        'database' => 'zend_db_example',
+        'username' => 'root',
+        'password' => '',
+    ]
+```
+- no return do arquivo .\config\autoload\global.php adicio a cofiguração acima, e regita em .\config\application.config.php no "service_manager"  adicion a class 
+    "Adapter::class => AdapterServiceFactory::class,"
+
+https://docs.zendframework.com/zend-db/adapter/<br>
+https://docs.zendframework.com/tutorials/getting-started/database-and-models/<br>
+https://docs.zendframework.com/zend-db/result-set/#quick-start
+---------------------------------------------------------------------------------------------------------------------------------------------------
+## instala o templete  AdminLTE 3 
+- copia os arquivo do templete na pasta 'public', e define a estrutura inicial em .\module\Application\view\layout\layout.phtml
+
+https://adminlte.io/
+https://adminlte.io/themes/AdminLTE/index.html
+----------------------------------------------------------------------------------------------
 ## DOCS
 * [Core](doc-core.md)
+* [Model](doc-model.md)
 -----------------------------------------------------------------------------------------------
 # Aqui está a lista com todos os componentes que iremos utilizar
 
