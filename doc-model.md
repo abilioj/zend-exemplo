@@ -1,2 +1,0 @@
-# Configurando o Model
-

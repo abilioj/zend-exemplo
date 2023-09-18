@@ -8,7 +8,7 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ## CLASS Abstrata de email - implementando no core
-https://docs.zendframework.com/zend-mail/transport/intro/
+https://docs.zendframework.com/zend-mail/transport/intro/ <br>
 https://mailtrap.io/
 
 ```php
@@ -171,3 +171,92 @@ class FormElementErrorsFactory implements FactoryInterface{
     ]
 ```
 ---------------------------------------------------------------------------------------------------------------------------------------------------
+## Configurando o Model do core pra trabalha com o banco
+
+https://docs.zendframework.com/zend-db/table-gateway/
+https://docs.zendframework.com/tutorials/getting-started/database-and-models/
+
+- priprerio mode do nosso core, em module\Core\src\Model cria um <b>trait</b> chamando de "CoreModelTrait"
+```php
+namespace Core\Model;
+
+use Zend\Hydrator\Reflection;
+
+trait CoreModelTrait
+{
+    public function exchangeArray(array $data)
+    {
+        (new Reflection())->hydrate($data, $this);
+    }
+
+    public function getArrayCopy()
+    {
+        return (new Reflection())->extract($this);
+    }  
+}
+```
+
+- agora criaremo table-gateway, em module\Core\src\Model cria um <b>class</b> chamada "AbstractCoreModelTable"
+```php
+<?php
+
+namespace Core\Model;
+
+use RuntimeException;
+use Zend\Db\TableGateway\TableGatewayInterface;
+
+abstract class AbstractCoreModelTable
+{
+    protected $tableGateway;
+
+    public function __construct(TableGatewayInterface $tableGateway)
+    {
+        $this->tableGateway = $tableGateway;
+    }
+
+    public function getBy(array $params)
+    {
+        $rowset = $this->tableGateway->select($params);
+        $row = $rowset->current();
+        if (! $row) {
+            throw new RuntimeException('Could not find row');
+        }
+        return $row;
+    }
+
+    public function save(array $data)
+    {
+        unset(
+            $data['csrf'],
+            $data['verifypassword'],
+            $data['attachment']
+        );
+
+        if (isset($data['id'])) {
+            $id = (int) $data['id'];
+
+            if (! $this->getBy(['id' => $id])) {
+                throw new RuntimeException(sprintf(
+                    'Cannot update identifier %d; does not exist',
+                    $id
+                ));
+            }
+
+            $this->tableGateway->update($data, ['id' => $id]);
+
+            return $this->getBy(['id' => $id]);
+        }
+
+        $this->tableGateway->insert($data);
+
+        return $this->getBy(['id' => $this->tableGateway->getLastInsertValue()]);
+    }
+
+    public function delete($id)
+    {
+        $this->tableGateway->delete(['id' => (int) $id]);
+    }
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
